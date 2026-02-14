@@ -11,7 +11,7 @@ import {
   HttpCode,
   HttpStatus,
 } from '@nestjs/common';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiTags, ApiOperation } from '@nestjs/swagger';
 import { PatientsService } from './patients.service';
 import { CreatePatientDto } from './dto/create-patient.dto';
 import { UpdatePatientDto } from './dto/update-patient.dto';
@@ -23,11 +23,13 @@ export class PatientsController {
 
   @Post()
   @HttpCode(HttpStatus.CREATED)
+  @ApiOperation({ summary: 'Create patient', description: 'Register a new patient record with personal and contact information' })
   create(@Body() createPatientDto: CreatePatientDto) {
     return this.patientsService.create(createPatientDto);
   }
 
   @Get()
+  @ApiOperation({ summary: 'List patients', description: 'Retrieve a paginated list of patients with optional search filtering' })
   findAll(
     @Query('page') page?: number,
     @Query('limit') limit?: number,
@@ -37,11 +39,13 @@ export class PatientsController {
   }
 
   @Get(':id')
+  @ApiOperation({ summary: 'Get patient', description: 'Retrieve a single patient record by UUID' })
   findOne(@Param('id', ParseUUIDPipe) id: string) {
     return this.patientsService.findOne(id);
   }
 
   @Patch(':id')
+  @ApiOperation({ summary: 'Update patient', description: 'Partially update an existing patient record by UUID' })
   update(
     @Param('id', ParseUUIDPipe) id: string,
     @Body() updatePatientDto: UpdatePatientDto,
@@ -51,6 +55,7 @@ export class PatientsController {
 
   @Delete(':id')
   @HttpCode(HttpStatus.NO_CONTENT)
+  @ApiOperation({ summary: 'Delete patient', description: 'Permanently remove a patient record by UUID' })
   remove(@Param('id', ParseUUIDPipe) id: string) {
     return this.patientsService.remove(id);
   }

@@ -8,7 +8,7 @@ import {
   Query,
   Param,
 } from '@nestjs/common';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiTags, ApiOperation } from '@nestjs/swagger';
 import { RedoxService } from './redox.service';
 import { SearchPatientDto } from './dto/search-patient.dto';
 import { PatientSearchResult } from './interfaces/redox-patient-search.interface';
@@ -35,6 +35,7 @@ export class RedoxController {
 
   @Post('patients/search')
   @HttpCode(HttpStatus.OK)
+  @ApiOperation({ summary: 'Search patients (POST)', description: 'Search for patients in the Redox EHR by name, birthdate, gender, and other demographics' })
   async searchPatients(
     @Body() searchDto: SearchPatientDto,
   ): Promise<{ results: PatientSearchResult[]; total: number }> {
@@ -55,6 +56,7 @@ export class RedoxController {
   }
 
   @Get('patients/search')
+  @ApiOperation({ summary: 'Search patients (GET)', description: 'Search for patients in the Redox EHR using query parameters' })
   async searchPatientsGet(
     @Query('given') given: string,
     @Query('family') family: string,
@@ -77,6 +79,7 @@ export class RedoxController {
   }
 
   @Get('patients/:patientId/medications')
+  @ApiOperation({ summary: 'Get medications', description: 'Retrieve medication requests for a patient, optionally filtered by intent' })
   async getPatientMedications(
     @Param('patientId') patientId: string,
     @Query('intent') intent?: string,
@@ -93,6 +96,7 @@ export class RedoxController {
   }
 
   @Get('patients/:patientId/conditions')
+  @ApiOperation({ summary: 'Get conditions', description: 'Retrieve active and historical conditions/diagnoses for a patient' })
   async getPatientConditions(
     @Param('patientId') patientId: string,
     @Query('clinical-status') clinicalStatus?: string,
@@ -109,6 +113,7 @@ export class RedoxController {
   }
 
   @Get('patients/:patientId/allergies')
+  @ApiOperation({ summary: 'Get allergies', description: 'Retrieve allergy and intolerance records for a patient' })
   async getPatientAllergies(
     @Param('patientId') patientId: string,
     @Query('clinical-status') clinicalStatus?: string,
@@ -125,6 +130,7 @@ export class RedoxController {
   }
 
   @Get('patients/:patientId/observations')
+  @ApiOperation({ summary: 'Get observations', description: 'Retrieve clinical observations (vitals, lab results) for a patient, optionally filtered by category or code' })
   async getPatientObservations(
     @Param('patientId') patientId: string,
     @Query('category') category?: string,
@@ -143,6 +149,7 @@ export class RedoxController {
   }
 
   @Get('patients/:patientId/immunizations')
+  @ApiOperation({ summary: 'Get immunizations', description: 'Retrieve immunization/vaccination records for a patient' })
   async getPatientImmunizations(
     @Param('patientId') patientId: string,
     @Query('status') status?: string,
@@ -159,6 +166,7 @@ export class RedoxController {
   }
 
   @Get('patients/:patientId/procedures')
+  @ApiOperation({ summary: 'Get procedures', description: 'Retrieve surgical and clinical procedures performed on a patient' })
   async getPatientProcedures(
     @Param('patientId') patientId: string,
     @Query('status') status?: string,
@@ -175,6 +183,7 @@ export class RedoxController {
   }
 
   @Get('patients/:patientId/encounters')
+  @ApiOperation({ summary: 'Get encounters', description: 'Retrieve clinical encounters and visits for a patient' })
   async getPatientEncounters(
     @Param('patientId') patientId: string,
     @Query('status') status?: string,
@@ -191,6 +200,7 @@ export class RedoxController {
   }
 
   @Get('patients/:patientId/diagnostic-reports')
+  @ApiOperation({ summary: 'Get diagnostic reports', description: 'Retrieve diagnostic reports (lab panels, imaging results) for a patient' })
   async getPatientDiagnosticReports(
     @Param('patientId') patientId: string,
     @Query('category') category?: string,
@@ -207,6 +217,7 @@ export class RedoxController {
   }
 
   @Get('patients/:patientId/care-plans')
+  @ApiOperation({ summary: 'Get care plans', description: 'Retrieve care plans outlining treatment goals and activities for a patient' })
   async getPatientCarePlans(
     @Param('patientId') patientId: string,
     @Query('status') status?: string,
@@ -223,6 +234,7 @@ export class RedoxController {
   }
 
   @Get('patients/:patientId/documents')
+  @ApiOperation({ summary: 'Get documents', description: 'Retrieve clinical document references (notes, discharge summaries) for a patient' })
   async getPatientDocuments(
     @Param('patientId') patientId: string,
     @Query('type') type?: string,
@@ -239,6 +251,7 @@ export class RedoxController {
   }
 
   @Get('patients/:patientId/goals')
+  @ApiOperation({ summary: 'Get goals', description: 'Retrieve health and treatment goals for a patient' })
   async getPatientGoals(
     @Param('patientId') patientId: string,
     @Query('lifecycle-status') lifecycleStatus?: string,
@@ -255,6 +268,7 @@ export class RedoxController {
   }
 
   @Get('patients/:patientId/care-teams')
+  @ApiOperation({ summary: 'Get care teams', description: 'Retrieve care team members and their roles for a patient' })
   async getPatientCareTeams(
     @Param('patientId') patientId: string,
     @Query('status') status?: string,
@@ -271,6 +285,7 @@ export class RedoxController {
   }
 
   @Get('patients/:patientId/family-history')
+  @ApiOperation({ summary: 'Get family history', description: 'Retrieve family member medical history relevant to the patient' })
   async getPatientFamilyHistory(
     @Param('patientId') patientId: string,
   ): Promise<{ results: FamilyMemberHistoryResult[]; total: number }> {
@@ -283,6 +298,7 @@ export class RedoxController {
   }
 
   @Get('patients/:patientId/medication-administrations')
+  @ApiOperation({ summary: 'Get medication administrations', description: 'Retrieve records of medications actually administered to a patient' })
   async getPatientMedicationAdministrations(
     @Param('patientId') patientId: string,
     @Query('status') status?: string,
@@ -299,6 +315,7 @@ export class RedoxController {
   }
 
   @Get('patients/:patientId/medication-statements')
+  @ApiOperation({ summary: 'Get medication statements', description: 'Retrieve patient-reported or provider-recorded medication usage statements' })
   async getPatientMedicationStatements(
     @Param('patientId') patientId: string,
     @Query('status') status?: string,
