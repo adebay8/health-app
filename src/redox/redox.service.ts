@@ -115,17 +115,29 @@ export class RedoxService implements OnModuleInit {
   }
 
   private loadConfiguration(): void {
-    const privateKeyPath = this.configService.get<string>(
-      'REDOX_PRIVATE_KEY_PATH',
-      path.join(process.cwd(), 'private key.pem'),
-    );
-    this.privateKey = fs.readFileSync(privateKeyPath, 'utf8');
+    const privateKeyEnv = this.configService.get<string>('REDOX_PRIVATE_KEY');
+    if (privateKeyEnv) {
+      this.privateKey = privateKeyEnv;
+    } else {
+      const privateKeyPath = this.configService.get<string>(
+        'REDOX_PRIVATE_KEY_PATH',
+        path.join(process.cwd(), 'private key.pem'),
+      );
+      this.privateKey = fs.readFileSync(privateKeyPath, 'utf8');
+    }
 
-    const jwkPath = this.configService.get<string>(
-      'REDOX_PRIVATE_KEY_JWK_PATH',
-      path.join(process.cwd(), 'private keyjwk.json'),
-    );
-    const jwk = JSON.parse(fs.readFileSync(jwkPath, 'utf8'));
+    const jwkEnv = this.configService.get<string>('REDOX_PRIVATE_KEY_JWK');
+    const jwk = jwkEnv
+      ? JSON.parse(jwkEnv)
+      : JSON.parse(
+          fs.readFileSync(
+            this.configService.get<string>(
+              'REDOX_PRIVATE_KEY_JWK_PATH',
+              path.join(process.cwd(), 'private keyjwk.json'),
+            ),
+            'utf8',
+          ),
+        );
     this.kid = jwk.kid;
 
     this.clientId = this.configService.getOrThrow<string>('REDOX_CLIENT_ID');
