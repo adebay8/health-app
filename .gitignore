@@ -30,8 +30,3 @@ npm-debug.log*
 
 # Coverage
 coverage/
-
-# Keys (keep in .env, not committed)
-*.pem
-*.key
-*jwk.json
