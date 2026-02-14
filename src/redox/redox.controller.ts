@@ -8,6 +8,7 @@ import {
   Query,
   Param,
 } from '@nestjs/common';
+import { ApiTags } from '@nestjs/swagger';
 import { RedoxService } from './redox.service';
 import { SearchPatientDto } from './dto/search-patient.dto';
 import { PatientSearchResult } from './interfaces/redox-patient-search.interface';
@@ -27,6 +28,7 @@ import { FamilyMemberHistoryResult } from './interfaces/fhir-family-history.inte
 import { MedicationAdministrationResult } from './interfaces/fhir-medication-administration.interface';
 import { MedicationStatementResult } from './interfaces/fhir-medication-statement.interface';
 
+@ApiTags('Redox')
 @Controller('redox')
 export class RedoxController {
   constructor(private readonly redoxService: RedoxService) {}

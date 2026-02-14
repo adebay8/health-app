@@ -24,6 +24,7 @@
     "@nestjs/core": "^11.1.13",
     "@nestjs/mapped-types": "^2.1.0",
     "@nestjs/platform-express": "^11.1.13",
+    "@nestjs/swagger": "^11.2.6",
     "@nestjs/typeorm": "^11.0.0",
     "axios": "^1.13.4",
     "class-transformer": "^0.5.1",
