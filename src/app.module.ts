@@ -6,6 +6,8 @@ import { AppService } from './app.service';
 import { DatabaseModule } from './database/database.module';
 import { PatientsModule } from './patients/patients.module';
 import { RedoxModule } from './redox/redox.module';
+import { WearablesModule } from './wearables/wearables.module';
+import { ParticleModule } from './particle/particle.module';
 import { HttpExceptionFilter } from './common/filters/http-exception.filter';
 import { TransformInterceptor } from './common/interceptors/transform.interceptor';
 
@@ -18,6 +20,8 @@ import { TransformInterceptor } from './common/interceptors/transform.intercepto
     DatabaseModule,
     PatientsModule,
     RedoxModule,
+    WearablesModule,
+    ParticleModule,
   ],
   controllers: [AppController],
   providers: [
