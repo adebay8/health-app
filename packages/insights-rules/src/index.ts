@@ -1,2 +1,2 @@
-// Stub — filled in a later task.
+// Filled in Task 19 — generateFlags entry point.
 export {};
