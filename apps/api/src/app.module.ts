@@ -10,6 +10,7 @@ import { WearablesModule } from './wearables/wearables.module';
 import { ParticleModule } from './particle/particle.module';
 import { ClinicalModule } from './clinical/clinical.module';
 import { SeedModule } from './seed/seed.module';
+import { DashboardModule } from './dashboard/dashboard.module';
 import { HttpExceptionFilter } from './common/filters/http-exception.filter';
 import { TransformInterceptor } from './common/interceptors/transform.interceptor';
 
@@ -26,6 +27,7 @@ import { TransformInterceptor } from './common/interceptors/transform.intercepto
     ParticleModule,
     ClinicalModule,
     SeedModule,
+    DashboardModule,
   ],
   controllers: [AppController],
   providers: [
