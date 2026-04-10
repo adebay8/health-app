@@ -13,8 +13,8 @@ export interface ObservationRecord extends ProvenanceFields {
   display: string;
   value: string;               // string so we can represent "138/86" as one value when needed
   unit?: string;
-  referenceRangeLow?: number;
-  referenceRangeHigh?: number;
+  referenceRangeLow?: number;  // only meaningful when unit is set
+  referenceRangeHigh?: number; // only meaningful when unit is set
   interpretation?: ObservationInterpretation;
   effectiveDate: string;
   anatomyRef?: AnatomyRef;

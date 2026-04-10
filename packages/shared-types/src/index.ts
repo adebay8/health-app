@@ -8,3 +8,4 @@ export * from './observation';
 export * from './encounter';
 export * from './payload';
 export * from './insights';
+export * from './errors';

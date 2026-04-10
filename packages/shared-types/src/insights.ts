@@ -17,3 +17,11 @@ export interface InsightsResponse {
   flags: InsightFlag[];
   narration: string;
 }
+
+export interface AskRequest {
+  question: string;
+}
+
+export interface AskResponse {
+  answer: string;
+}

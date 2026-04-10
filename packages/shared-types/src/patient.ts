@@ -16,10 +16,7 @@ export interface PatientRecord {
   externalIds: ExternalIds;
 }
 
-export interface PatientSummary {
-  id: string;
-  firstName: string;
-  lastName: string;
-  dateOfBirth: string;
-  gender: Gender;
-}
+export type PatientSummary = Pick<
+  PatientRecord,
+  'id' | 'firstName' | 'lastName' | 'dateOfBirth' | 'gender'
+>;

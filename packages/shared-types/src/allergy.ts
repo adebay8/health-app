@@ -7,6 +7,6 @@ export interface AllergyRecord extends ProvenanceFields {
   patientId: string;
   substance: string;
   reaction?: string;
-  severity: AllergySeverity;
+  severity?: AllergySeverity;   // FHIR reaction.severity is optional; absent means unknown
   recordedDate: string;
 }
