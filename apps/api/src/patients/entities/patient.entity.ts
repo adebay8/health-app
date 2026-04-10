@@ -6,6 +6,7 @@ import {
   UpdateDateColumn,
   Index,
 } from 'typeorm';
+import { ExternalIds } from '@health-app/shared-types';
 
 export enum Gender {
   MALE = 'male',
@@ -36,6 +37,9 @@ export class Patient {
 
   @Column({ length: 20 })
   phoneNumber: string;
+
+  @Column({ type: 'simple-json', nullable: true })
+  externalIds?: ExternalIds;
 
   @Column({ default: true })
   isActive: boolean;

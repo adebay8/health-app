@@ -8,6 +8,7 @@ import { PatientsModule } from './patients/patients.module';
 import { RedoxModule } from './redox/redox.module';
 import { WearablesModule } from './wearables/wearables.module';
 import { ParticleModule } from './particle/particle.module';
+import { ClinicalModule } from './clinical/clinical.module';
 import { HttpExceptionFilter } from './common/filters/http-exception.filter';
 import { TransformInterceptor } from './common/interceptors/transform.interceptor';
 
@@ -22,6 +23,7 @@ import { TransformInterceptor } from './common/interceptors/transform.intercepto
     RedoxModule,
     WearablesModule,
     ParticleModule,
+    ClinicalModule,
   ],
   controllers: [AppController],
   providers: [
