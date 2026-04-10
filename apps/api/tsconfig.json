@@ -5,7 +5,9 @@
     "baseUrl": "./",
     "sourceMap": true,
     "removeComments": true,
-    "incremental": true
+    "incremental": true,
+    "strictPropertyInitialization": false,
+    "useUnknownInCatchVariables": false
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules", "dist", "test"]
