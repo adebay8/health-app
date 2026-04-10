@@ -1,0 +1,109 @@
+{
+  "resourceType": "Bundle",
+  "type": "searchset",
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "Patient",
+        "id": "particle-sarah-001",
+        "name": [{ "given": ["Sarah"], "family": "Chen" }],
+        "birthDate": "1997-06-12",
+        "gender": "female",
+        "telecom": [
+          { "system": "email", "value": "sarah.chen@example.com" },
+          { "system": "phone", "value": "+15551234567" }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Condition",
+        "id": "particle-sarah-cond-1",
+        "code": {
+          "coding": [
+            { "system": "http://snomed.info/sct", "code": "61582004", "display": "Allergic rhinitis" }
+          ],
+          "text": "Seasonal allergic rhinitis"
+        },
+        "subject": { "reference": "Patient/particle-sarah-001" },
+        "clinicalStatus": { "coding": [{ "code": "active", "display": "Active" }] },
+        "recordedDate": "2020-04-15",
+        "onsetDateTime": "2015-05-01"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "AllergyIntolerance",
+        "id": "particle-sarah-allergy-1",
+        "code": {
+          "coding": [{ "system": "http://www.nlm.nih.gov/research/umls/rxnorm", "code": "7984", "display": "Penicillin G" }],
+          "text": "Penicillin"
+        },
+        "recordedDate": "2018-09-02",
+        "reaction": [
+          {
+            "manifestation": [{ "text": "Hives" }],
+            "severity": "moderate"
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "particle-sarah-obs-1",
+        "status": "final",
+        "category": [
+          { "coding": [{ "system": "http://terminology.hl7.org/CodeSystem/observation-category", "code": "laboratory" }] }
+        ],
+        "code": {
+          "coding": [{ "system": "http://loinc.org", "code": "13457-7", "display": "LDL Cholesterol" }],
+          "text": "LDL Cholesterol"
+        },
+        "subject": { "reference": "Patient/particle-sarah-001" },
+        "effectiveDateTime": "2025-11-10",
+        "valueQuantity": { "value": 92, "unit": "mg/dL", "system": "http://unitsofmeasure.org", "code": "mg/dL" },
+        "referenceRange": [{ "low": { "value": 0 }, "high": { "value": 100 } }],
+        "interpretation": [{ "coding": [{ "code": "N", "display": "Normal" }] }]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "particle-sarah-obs-2",
+        "status": "final",
+        "category": [
+          { "coding": [{ "system": "http://terminology.hl7.org/CodeSystem/observation-category", "code": "vital-signs" }] }
+        ],
+        "code": {
+          "coding": [{ "system": "http://loinc.org", "code": "85354-9", "display": "Blood pressure panel" }],
+          "text": "Blood pressure"
+        },
+        "subject": { "reference": "Patient/particle-sarah-001" },
+        "effectiveDateTime": "2025-11-10",
+        "component": [
+          {
+            "code": { "coding": [{ "code": "8480-6", "display": "Systolic" }] },
+            "valueQuantity": { "value": 118, "unit": "mmHg" }
+          },
+          {
+            "code": { "coding": [{ "code": "8462-4", "display": "Diastolic" }] },
+            "valueQuantity": { "value": 76, "unit": "mmHg" }
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "particle-sarah-enc-1",
+        "class": { "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode", "code": "AMB", "display": "Ambulatory" },
+        "type": [{ "text": "Annual physical exam" }],
+        "reasonCode": [{ "text": "Annual wellness visit" }],
+        "subject": { "reference": "Patient/particle-sarah-001" },
+        "period": { "start": "2025-11-10T09:00:00Z", "end": "2025-11-10T09:45:00Z" },
+        "participant": [{ "individual": { "display": "Dr. Anita Rao" } }]
+      }
+    }
+  ]
+}

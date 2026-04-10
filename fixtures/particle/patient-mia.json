@@ -1,0 +1,105 @@
+{
+  "resourceType": "Bundle",
+  "type": "searchset",
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "Patient",
+        "id": "particle-mia-001",
+        "name": [{ "given": ["Mia"], "family": "Patel" }],
+        "birthDate": "2016-08-22",
+        "gender": "female",
+        "telecom": []
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "particle-mia-obs-1",
+        "status": "final",
+        "category": [
+          { "coding": [{ "system": "http://terminology.hl7.org/CodeSystem/observation-category", "code": "vital-signs" }] }
+        ],
+        "code": {
+          "coding": [{ "system": "http://loinc.org", "code": "8302-2", "display": "Body height" }],
+          "text": "Body height"
+        },
+        "subject": { "reference": "Patient/particle-mia-001" },
+        "effectiveDateTime": "2025-09-15",
+        "valueQuantity": { "value": 132, "unit": "cm", "system": "http://unitsofmeasure.org", "code": "cm" }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "particle-mia-obs-2",
+        "status": "final",
+        "category": [
+          { "coding": [{ "system": "http://terminology.hl7.org/CodeSystem/observation-category", "code": "vital-signs" }] }
+        ],
+        "code": {
+          "coding": [{ "system": "http://loinc.org", "code": "29463-7", "display": "Body weight" }],
+          "text": "Body weight"
+        },
+        "subject": { "reference": "Patient/particle-mia-001" },
+        "effectiveDateTime": "2025-09-15",
+        "valueQuantity": { "value": 28, "unit": "kg", "system": "http://unitsofmeasure.org", "code": "kg" }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "particle-mia-obs-3",
+        "status": "final",
+        "category": [
+          { "coding": [{ "system": "http://terminology.hl7.org/CodeSystem/observation-category", "code": "vital-signs" }] }
+        ],
+        "code": {
+          "coding": [{ "system": "http://loinc.org", "code": "8867-4", "display": "Heart rate" }],
+          "text": "Heart rate"
+        },
+        "subject": { "reference": "Patient/particle-mia-001" },
+        "effectiveDateTime": "2025-09-15",
+        "valueQuantity": { "value": 84, "unit": "/min", "system": "http://unitsofmeasure.org", "code": "/min" }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "particle-mia-obs-4",
+        "status": "final",
+        "category": [
+          { "coding": [{ "system": "http://terminology.hl7.org/CodeSystem/observation-category", "code": "vital-signs" }] }
+        ],
+        "code": {
+          "coding": [{ "system": "http://loinc.org", "code": "85354-9", "display": "Blood pressure panel" }],
+          "text": "Blood pressure"
+        },
+        "subject": { "reference": "Patient/particle-mia-001" },
+        "effectiveDateTime": "2025-09-15",
+        "component": [
+          {
+            "code": { "coding": [{ "code": "8480-6", "display": "Systolic" }] },
+            "valueQuantity": { "value": 98, "unit": "mmHg" }
+          },
+          {
+            "code": { "coding": [{ "code": "8462-4", "display": "Diastolic" }] },
+            "valueQuantity": { "value": 62, "unit": "mmHg" }
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "particle-mia-enc-1",
+        "class": { "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode", "code": "AMB", "display": "Ambulatory" },
+        "type": [{ "text": "Well-child visit" }],
+        "reasonCode": [{ "text": "Annual pediatric well-child exam" }],
+        "subject": { "reference": "Patient/particle-mia-001" },
+        "period": { "start": "2025-09-15T11:00:00Z", "end": "2025-09-15T11:30:00Z" },
+        "participant": [{ "individual": { "display": "Dr. Priya Shah" } }]
+      }
+    }
+  ]
+}
