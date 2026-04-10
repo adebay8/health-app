@@ -121,7 +121,7 @@ export class RedoxService implements OnModuleInit {
     } else {
       const privateKeyPath = this.configService.get<string>(
         'REDOX_PRIVATE_KEY_PATH',
-        path.join(process.cwd(), 'private key.pem'),
+        path.join(process.cwd(), 'private-key.pem'),
       );
       this.privateKey = fs.readFileSync(privateKeyPath, 'utf8');
     }
@@ -133,7 +133,7 @@ export class RedoxService implements OnModuleInit {
           fs.readFileSync(
             this.configService.get<string>(
               'REDOX_PRIVATE_KEY_JWK_PATH',
-              path.join(process.cwd(), 'private keyjwk.json'),
+              path.join(process.cwd(), 'private-keyjwk.json'),
             ),
             'utf8',
           ),

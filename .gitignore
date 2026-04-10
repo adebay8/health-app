@@ -33,3 +33,6 @@ coverage/
 
 .superpowers/
 .turbo/
+
+# Lock files (managed per-workspace by pnpm)
+package-lock.json
