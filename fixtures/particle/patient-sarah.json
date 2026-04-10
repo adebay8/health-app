@@ -23,7 +23,7 @@
           "coding": [
             { "system": "http://snomed.info/sct", "code": "61582004", "display": "Allergic rhinitis" }
           ],
-          "text": "Seasonal allergic rhinitis"
+          "text": "Allergic rhinitis"
         },
         "subject": { "reference": "Patient/particle-sarah-001" },
         "clinicalStatus": { "coding": [{ "code": "active", "display": "Active" }] },
