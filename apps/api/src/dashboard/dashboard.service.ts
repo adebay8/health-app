@@ -17,6 +17,15 @@ import { Allergy } from '../clinical/entities/allergy.entity';
 import { Observation } from '../clinical/entities/observation.entity';
 import { Encounter } from '../clinical/entities/encounter.entity';
 
+// TypeORM hydrates `datetime` columns as Date instances even when the TS type
+// says `string`. The rules engine expects strings (and uses `===` and
+// `localeCompare` on them), so we coerce at the boundary.
+function toIsoString(v: string | Date | null | undefined): string | undefined {
+  if (v === null || v === undefined) return undefined;
+  if (v instanceof Date) return v.toISOString();
+  return v;
+}
+
 @Injectable()
 export class DashboardService {
   private readonly logger = new Logger(DashboardService.name);
@@ -66,11 +75,34 @@ export class DashboardService {
 
     return {
       patient: patientRecord,
-      conditions: conditions as unknown as ConditionRecord[],
-      medications: medications as unknown as MedicationRecord[],
-      allergies: allergies as unknown as AllergyRecord[],
-      observations: observations as unknown as ObservationRecord[],
-      encounters: encounters as unknown as EncounterRecord[],
+      conditions: conditions.map((c) => ({
+        ...c,
+        onsetDate: toIsoString(c.onsetDate),
+        recordedDate: toIsoString(c.recordedDate) ?? '',
+        fetchedAt: toIsoString(c.fetchedAt) ?? '',
+      })) as unknown as ConditionRecord[],
+      medications: medications.map((m) => ({
+        ...m,
+        startDate: toIsoString(m.startDate),
+        endDate: toIsoString(m.endDate),
+        fetchedAt: toIsoString(m.fetchedAt) ?? '',
+      })) as unknown as MedicationRecord[],
+      allergies: allergies.map((a) => ({
+        ...a,
+        recordedDate: toIsoString(a.recordedDate) ?? '',
+        fetchedAt: toIsoString(a.fetchedAt) ?? '',
+      })) as unknown as AllergyRecord[],
+      observations: observations.map((o) => ({
+        ...o,
+        effectiveDate: toIsoString(o.effectiveDate) ?? '',
+        fetchedAt: toIsoString(o.fetchedAt) ?? '',
+      })) as unknown as ObservationRecord[],
+      encounters: encounters.map((e) => ({
+        ...e,
+        startDate: toIsoString(e.startDate) ?? '',
+        endDate: toIsoString(e.endDate),
+        fetchedAt: toIsoString(e.fetchedAt) ?? '',
+      })) as unknown as EncounterRecord[],
       warnings: [],
     };
   }
