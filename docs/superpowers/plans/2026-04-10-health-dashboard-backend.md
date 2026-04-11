@@ -4548,3 +4548,7 @@ Deliberately deferred. Tracked here so reviewers don't look for them.
 - Authentication
 - Live Particle API calls at runtime (fixtures only)
 - The 3D body visualization UI
+
+---
+
+**Status:** Backend plan complete. Frontend plan tracked in `2026-04-10-health-dashboard-frontend.md` (to be written).
