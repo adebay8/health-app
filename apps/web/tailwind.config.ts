@@ -59,6 +59,26 @@ const config: Config = {
           border: "var(--sidebar-border)",
           ring: "var(--sidebar-ring)",
         },
+        healthy: {
+          DEFAULT: "var(--healthy)",
+          foreground: "var(--healthy-foreground)",
+          muted: "var(--healthy-muted)",
+        },
+        warning: {
+          DEFAULT: "var(--warning)",
+          foreground: "var(--warning-foreground)",
+          muted: "var(--warning-muted)",
+        },
+        critical: {
+          DEFAULT: "var(--critical)",
+          foreground: "var(--critical-foreground)",
+          muted: "var(--critical-muted)",
+        },
+        info: {
+          DEFAULT: "var(--info)",
+          foreground: "var(--info-foreground)",
+          muted: "var(--info-muted)",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",

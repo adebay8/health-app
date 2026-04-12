@@ -1,6 +1,9 @@
 import type { Metadata } from 'next';
+import { Inter } from 'next/font/google';
 import { Header } from '@/components/header';
 import './globals.css';
+
+const inter = Inter({ subsets: ['latin'] });
 
 export const dynamic = 'force-dynamic';
 
@@ -16,9 +19,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="font-sans">
+      <body className={inter.className}>
         <Header />
-        <main className="mx-auto max-w-6xl px-4 py-6">{children}</main>
+        <main className="mx-auto max-w-7xl px-6 py-8">{children}</main>
       </body>
     </html>
   );
