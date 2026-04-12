@@ -19,17 +19,30 @@ export function SummaryCard({ payload }: { payload: NormalizedPatientPayload }) 
   const activeMeds = medications.filter((m) => m.status === 'active').length;
 
   return (
-    <Card className="bg-gradient-to-br from-blue-900 to-purple-900 text-white">
-      <CardHeader className="pb-2">
-        <div className="text-xs uppercase tracking-wide text-white/70">Summary</div>
-        <CardTitle className="text-2xl text-white">
+    <Card className="overflow-hidden bg-gradient-to-br from-primary to-[oklch(0.45_0.12_220)] text-primary-foreground shadow-lg">
+      <CardHeader className="pb-3">
+        <div className="text-xs font-medium uppercase tracking-wider text-primary-foreground/70">
+          Patient Overview
+        </div>
+        <CardTitle className="text-3xl font-bold text-primary-foreground">
           {patient.firstName} {patient.lastName}
         </CardTitle>
       </CardHeader>
-      <CardContent className="text-sm text-white/90">
-        {age} yo · {patient.gender} · {activeConditions} active condition
-        {activeConditions === 1 ? '' : 's'} · {activeMeds} active medication
-        {activeMeds === 1 ? '' : 's'}
+      <CardContent>
+        <div className="flex flex-wrap gap-2 text-sm">
+          <span className="inline-flex items-center rounded-full bg-white/15 px-3 py-1">
+            {age} yo
+          </span>
+          <span className="inline-flex items-center rounded-full bg-white/15 px-3 py-1">
+            {patient.gender}
+          </span>
+          <span className="inline-flex items-center rounded-full bg-white/15 px-3 py-1">
+            {activeConditions} condition{activeConditions === 1 ? '' : 's'}
+          </span>
+          <span className="inline-flex items-center rounded-full bg-white/15 px-3 py-1">
+            {activeMeds} medication{activeMeds === 1 ? '' : 's'}
+          </span>
+        </div>
       </CardContent>
     </Card>
   );

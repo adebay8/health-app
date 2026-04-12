@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { Sparkles } from 'lucide-react';
 import {
   Card, CardContent, CardHeader, CardTitle,
 } from '@/components/ui/card';
@@ -37,9 +38,10 @@ export function AskBox({ patientId }: Props) {
   }
 
   return (
-    <Card className="border-emerald-200 bg-emerald-50 dark:border-emerald-900 dark:bg-emerald-950">
+    <Card className="border-info/30 bg-info-muted shadow-sm">
       <CardHeader className="pb-2">
-        <CardTitle className="text-base text-emerald-900 dark:text-emerald-200">
+        <CardTitle className="flex items-center gap-2 text-base text-info">
+          <Sparkles className="h-4 w-4" />
           Ask about your health
         </CardTitle>
       </CardHeader>
@@ -53,11 +55,11 @@ export function AskBox({ patientId }: Props) {
             aria-label="Question"
           />
           <Button type="submit" disabled={isLoading || !question.trim()}>
-            {isLoading ? 'Asking…' : 'Ask'}
+            {isLoading ? 'Asking\u2026' : 'Ask'}
           </Button>
         </form>
         {answer && (
-          <div className="rounded-md border border-emerald-200 bg-white p-3 text-sm dark:border-emerald-900 dark:bg-background">
+          <div className="rounded-md border border-info/20 bg-card p-3 text-sm">
             {answer}
           </div>
         )}

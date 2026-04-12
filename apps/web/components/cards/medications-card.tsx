@@ -1,3 +1,4 @@
+import { Pill } from 'lucide-react';
 import {
   Card, CardContent, CardHeader, CardTitle,
 } from '@/components/ui/card';
@@ -7,17 +8,25 @@ import type { MedicationRecord } from '@health-app/shared-types';
 export function MedicationsCard({ medications }: { medications: MedicationRecord[] }) {
   if (medications.length === 0) {
     return (
-      <Card>
-        <CardHeader><CardTitle className="text-base">Medications</CardTitle></CardHeader>
+      <Card className="shadow-sm">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2 text-base">
+            <Pill className="h-4 w-4 text-muted-foreground" />
+            Medications
+          </CardTitle>
+        </CardHeader>
         <CardContent className="text-sm text-muted-foreground">No medications recorded.</CardContent>
       </Card>
     );
   }
 
   return (
-    <Card>
+    <Card className="shadow-sm transition-shadow hover:shadow-md">
       <CardHeader>
-        <CardTitle className="text-base">Medications ({medications.length})</CardTitle>
+        <CardTitle className="flex items-center gap-2 text-base">
+          <Pill className="h-4 w-4 text-muted-foreground" />
+          Medications ({medications.length})
+        </CardTitle>
       </CardHeader>
       <CardContent className="space-y-2 text-sm">
         {medications.map((m) => (

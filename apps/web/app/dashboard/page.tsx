@@ -17,10 +17,10 @@ export default async function DashboardPage() {
   ]);
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-6">
       <SummaryCard payload={payload} />
       <InsightsPanel insights={insights} />
-      <div className="grid gap-4 md:grid-cols-2">
+      <div className="grid gap-6 md:grid-cols-2">
         <ConditionsCard conditions={payload.conditions} />
         <MedicationsCard medications={payload.medications} />
         <AllergiesCard allergies={payload.allergies} />

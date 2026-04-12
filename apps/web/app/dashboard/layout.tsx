@@ -25,17 +25,17 @@ export default function DashboardLayout({
   }
 
   return (
-    <div className="flex flex-col gap-6">
-      <nav className="flex items-center gap-1 overflow-x-auto border-b">
+    <div className="flex flex-col gap-8">
+      <nav className="flex items-center gap-1 overflow-x-auto border-b border-border/50 pb-px">
         {TABS.map((t) => (
           <Link
             key={t.href}
             href={t.href}
             className={cn(
-              'border-b-2 px-3 py-2 text-sm transition-colors',
+              'border-b-2 px-4 py-2.5 text-sm transition-colors',
               isActive(t)
-                ? 'border-primary text-foreground'
-                : 'border-transparent text-muted-foreground hover:text-foreground',
+                ? 'border-primary text-primary font-medium'
+                : 'border-transparent text-muted-foreground hover:text-foreground hover:border-border',
             )}
           >
             {t.label}

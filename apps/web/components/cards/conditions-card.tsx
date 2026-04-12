@@ -1,3 +1,4 @@
+import { Stethoscope } from 'lucide-react';
 import {
   Card, CardContent, CardHeader, CardTitle,
 } from '@/components/ui/card';
@@ -7,17 +8,25 @@ import type { ConditionRecord } from '@health-app/shared-types';
 export function ConditionsCard({ conditions }: { conditions: ConditionRecord[] }) {
   if (conditions.length === 0) {
     return (
-      <Card>
-        <CardHeader><CardTitle className="text-base">Conditions</CardTitle></CardHeader>
+      <Card className="shadow-sm">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2 text-base">
+            <Stethoscope className="h-4 w-4 text-muted-foreground" />
+            Conditions
+          </CardTitle>
+        </CardHeader>
         <CardContent className="text-sm text-muted-foreground">No conditions recorded.</CardContent>
       </Card>
     );
   }
 
   return (
-    <Card>
+    <Card className="shadow-sm transition-shadow hover:shadow-md">
       <CardHeader>
-        <CardTitle className="text-base">Conditions ({conditions.length})</CardTitle>
+        <CardTitle className="flex items-center gap-2 text-base">
+          <Stethoscope className="h-4 w-4 text-muted-foreground" />
+          Conditions ({conditions.length})
+        </CardTitle>
       </CardHeader>
       <CardContent className="space-y-2 text-sm">
         {conditions.map((c) => (
