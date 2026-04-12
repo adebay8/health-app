@@ -1,9 +1,12 @@
 import type { Metadata } from 'next';
+import { Header } from '@/components/header';
 import './globals.css';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title: 'Health Dashboard',
-  description: 'Health data dashboard MVP',
+  description: 'Aggregated health data for demo patients',
 };
 
 export default function RootLayout({
@@ -13,7 +16,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body className="font-sans">
+        <Header />
+        <main className="mx-auto max-w-6xl px-4 py-6">{children}</main>
+      </body>
     </html>
   );
 }
