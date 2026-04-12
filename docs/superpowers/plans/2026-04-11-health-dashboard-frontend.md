@@ -1624,3 +1624,7 @@ Tracked here so reviewers don't look for them:
 - Error boundaries (`error.tsx` at each route segment) — deferred until a real error path exists to handle
 - Dark mode toggle (shadcn's `slate` base supports dark mode, but we don't expose a toggle yet)
 - SEO meta tags beyond the default `<title>`
+
+---
+
+**Status:** Frontend plan complete. Dashboard MVP is end-to-end functional against the backend from `2026-04-10-health-dashboard-backend.md`.
